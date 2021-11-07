@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <meta name="msapplication-TileColor" content="#2d89ef" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Primary Meta Tags -->
+    <title>Coronavirus Outbreak in India - covid19india.org</title>
+    <meta
+      name="title"
+      content="Coronavirus Outbreak in India: Latest Map and Case Count"
+    />
+
+    <link
+      rel="preconnect"
+      href="https://data.covid19india.org/v4/min/data.min.json"
+      as="fetch"
+    />
+
+    <!-- Font Preloading -->
+    <link
+      rel="preload"
+      href="/fonts/Archia/archia-semibold-webfont.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Archia/archia-medium-webfont.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Archia/archia-bold-webfont.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <style>
+      /* font-face declarations for preloaded fonts */
+      /* These are the only 3 fonts being used.
+      font-face declarations for thin, regular and light fonts should be added as needed */
+      @font-face {
+        font-family: 'Archia';
+        src: url('/fonts/Archia/archia-semibold-webfont.eot');
+        src: local('Archia'),
+          url('/fonts/Archia/archia-semibold-webfont.eot?#iefix')
+            format('embedded-opentype'),
+          url('/fonts/Archia/archia-semibold-webfont.woff2') format('woff2'),
+          url('/fonts/Archia/archia-semibold-webfont.woff') format('woff'),
+          url('/fonts/Archia/archia-semibold-webfont.ttf') format('truetype');
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Archia';
+        src: url('/fonts/Archia/archia-medium-webfont.eot');
+        src: local('Archia'),
+          url('/fonts/Archia/archia-medium-webfont.eot?#iefix')
+            format('embedded-opentype'),
+          url('/fonts/Archia/archia-medium-webfont.woff2') format('woff2'),
+          url('/fonts/Archia/archia-medium-webfont.woff') format('woff'),
+          url('/fonts/Archia/archia-medium-webfont.ttf') format('truetype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Archia';
+        src: url('/fonts/Archia/archia-bold-webfont.eot');
+        src: local('Archia'),
+          url('/fonts/Archia/archia-bold-webfont.eot?#iefix')
+            format('embedded-opentype'),
+          url('/fonts/Archia/archia-bold-webfont.woff2') format('woff2'),
+          url('/fonts/Archia/archia-bold-webfont.woff') format('woff'),
+          url('/fonts/Archia/archia-bold-webfont.ttf') format('truetype');
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+  </head>
+
+  <body class="dark-mode"> 
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

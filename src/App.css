@@ -1,0 +1,500 @@
+* {
+    font-family: 'archia';
+}
+html {
+    width: 100vw;
+}
+body {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    font-size: 24px !important;
+    font-weight: 900;
+}
+h2 {
+    font-size: 18px !important;
+    font-weight: 400;
+}
+h4 {
+    font-size: 13px !important;
+    font-weight: 900;
+}
+h5 {
+    font-size: 12px !important;
+    font-weight: 900;
+}
+h6 {
+    font-size: 11px !important;
+    font-weight: 600;
+}
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 120vh;
+}
+.Home {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 1rem;
+    margin-right: 3rem;
+}
+.Home .home-right {
+    display: flex;
+    flex-direction: column;
+}
+.Home .header {
+    z-index: 99;
+}
+.StateHeader {
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    height: 5.25rem;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    position: relative;
+    width: 100%;
+}
+.StateHeader > * {
+    align-self: flex-start;
+}
+.count {
+    align-items: center;
+    background: inherit;
+    border-radius: 50%;
+    color: inherit;
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    height: 1.5rem;
+    justify-content: center;
+    margin-left: 0.25rem;
+    width: 1.5rem;
+}
+.header {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 40rem;
+    width: 100%;
+}
+.header > * {
+    align-self: center;
+}
+
+.MapSwitcher {
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+}
+.MapSwitcher .highlight {
+    pointer-events: none;
+    position: absolute;
+}
+.MapSwitcher .highlight, .MapSwitcher .clickable {
+    border-radius: 5px;
+    cursor: pointer;
+    height: 5rem;
+    width: calc(25%);
+    z-index: 10;
+}
+.MapSwitcher .clickable {
+    transition: background 0.15s ease-in-out;
+}
+.MapSwitcher .clickable:hover.is-confirmed {
+    background: #ff073a 20;
+}
+.MapSwitcher .clickable:hover.is-active {
+    background: #007bff 20;
+}
+.MapSwitcher .clickable:hover.is-recovered {
+    background: #28a745 20;
+}
+.MapSwitcher .clickable:hover.is-deceased {
+    background: #6c757d 10;
+}
+.Level {
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.Level .level-item {
+    display: flex;
+    flex-direction: column;
+}
+.Level .level-item > * {
+    align-self: center;
+}
+.Level h1, .Level h5 {
+    margin-bottom: 0;
+}
+.Level h1 {
+    font-size: 20px !important;
+    font-weight: 600;
+}
+.Level h4 {
+    margin-bottom: -0.5rem;
+}
+.Level h5 {
+    font-weight: 600;
+    overflow-wrap: break-word;
+    text-align: center;
+    width: 100%;
+}
+.Level .is-confirmed h1, .Level .is-confirmed h5 {
+    color: #ff073a;
+}
+.Level .is-confirmed h4 {
+    color: #ff073a 99;
+}
+.Level .is-active h1, .Level .is-active h5 {
+    color: #007bff;
+}
+.Level .is-active h4 {
+    color: #007bff 99;
+}
+.Level .is-recovered h1, .Level .is-recovered h5 {
+    color: #28a745;
+}
+.Level .is-recovered h4 {
+    color: #28a745 99;
+}
+.Level .is-deceased h1, .Level .is-deceased h5 {
+    color: #6c757d;
+}
+.Level .is-deceased h4 {
+    color: #6c757d 99;
+}
+.anchor {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    user-select: none;
+    z-index: 999;
+}
+.anchor svg {
+    color: #6c757d 99;
+    transform: rotate(45deg);
+    transition: all 0.1s ease-in-out;
+}
+.anchor svg:hover {
+    color: #6c757d;
+}
+.anchor.stickied svg {
+    color: #6c757d;
+    transform: rotate(90deg);
+}
+.map-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.map-container.stickied {
+    position: sticky;
+    top: -6rem;
+}
+.MapExplorer {
+    align-self: center;
+    position: relative;
+    width: 100%;
+}
+.MapExplorer.stickied {
+    position: sticky !important;
+    top: 0;
+}
+.MapExplorer.hidden {
+    display: none;
+}
+.MapExplorer .anchor {
+    top: -1.5rem;
+}
+.MapExplorer .svg-parent {
+    display: block;
+    margin: auto;
+    margin-top: 2rem;
+    overflow: visible;
+    position: relative;
+    width: 90%;
+}
+.MapExplorer .svg-parent.maplegend {
+    margin-top: 0.6rem;
+    user-select: none;
+    z-index: 1;
+}
+.MapExplorer .svg-parent svg {
+    align-self: center;
+    height: 100%;
+    overflow: visible;
+    width: 100%;
+}
+.MapExplorer .svg-parent svg text {
+    fill: #6c757d;
+    font-weight: 600;
+    text-align: right;
+}
+.MapExplorer .map-button {
+    background: #ffc107 20;
+    border-radius: 5px;
+    color: #fd7e14;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 900;
+    margin-bottom: 0.25rem;
+    padding: 0.5rem;
+    position: absolute;
+    right: 0;
+    transition: all 0.2s ease-in-out;
+}
+.MapExplorer .map-button:hover {
+    background: #ffc107 30;
+}
+.MapExplorer .map-button svg {
+    height: 12px;
+    margin-left: 0.25rem;
+    stroke: #fd7e14 99;
+    stroke-width: 3px;
+    vertical-align: middle;
+    width: 12px;
+}
+.MapExplorer .panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 6rem;
+    padding-top: 1rem;
+    position: relative;
+}
+.MapExplorer .panel h2 {
+    font-weight: 900;
+    margin-top: 0;
+    transition: color 0.3s ease-in-out;
+    word-wrap: break-word;
+}
+.MapExplorer .panel h2.confirmed {
+    color: #e23028;
+}
+.MapExplorer .panel h2.active {
+    color: #007bff;
+}
+.MapExplorer .panel h2.recovered {
+    color: #28a745;
+}
+.MapExplorer .panel h2.deceased {
+    color: #6c757d;
+}
+.MapExplorer .panel h4 {
+    color: #6c757d 99;
+    margin: 0;
+    word-wrap: break-word;
+}
+.MapExplorer .panel .panel-left {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+.MapExplorer .panel .panel-left .district {
+    line-height: 15px;
+    margin: 0;
+    transition: color 0.3s ease-in-out;
+}
+.MapExplorer .panel .panel-left .district span {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.MapExplorer .panel .panel-left .district.confirmed {
+    color: #e23028;
+}
+.MapExplorer .panel .panel-left .district.active {
+    color: #007bff;
+}
+.MapExplorer .panel .panel-left .district.recovered {
+    color: #28a745;
+}
+.MapExplorer .panel .panel-left .district.deceased {
+    color: #6c757d;
+}
+.MapExplorer .panel .panel-right {
+    color: #6c757d 99;
+    display: flex;
+    flex-direction: column;
+}
+
+.MapExplorer .panel.bottom {
+    margin-top: 0;
+    padding-top: 0;
+}
+.MapExplorer .footnote {
+    color: #6c757d;
+    margin-bottom: 0;
+    margin-top: 1em;
+    text-align: left;
+    z-index: 1;
+}
+.MapExplorer .footnote a {
+    border-bottom: 2px solid #6c757d 20;
+    text-decoration: none;
+}
+.MapExplorer .footnote a:hover {
+    background: #6c757d 20;
+}
+@media (min-width: 9px) {
+    .Home, .State {
+        padding-top: 5rem;
+   }
+    .dark-mode .Navbar, .dark-mode .expand, .dark-mode .navbar-right {
+        background: #1e1e30 !important;
+   }
+    .State .state-left, .State .state-right {
+        min-width: 33rem;
+        width: 40%;
+   }
+    .Home .home-left, .Home .home-right {
+        min-width: 33rem;
+        width: 40%;
+   }
+    .Home .home-left .home-left.expanded, .Home .home-right .home-left.expanded {
+        margin-bottom: 2.5rem;
+        margin-right: 0;
+   }
+    .Home .home-left .home-right.expanded, .Home .home-right .home-right.expanded {
+        flex-direction: row;
+        margin-left: 0;
+   }
+    .Home .map-container.expanded {
+        margin-right: 2.5rem;
+        width: 50%;
+   }
+    .dark-mode {
+        background: #161625 !important;
+        color: #bdbdbd;
+   }
+    .dark-mode .switch-wrapper > div {
+        background: #161625 !important;
+   }
+    .dark-mode .is-tested {
+        color: #9673b9 !important;
+   }
+    .dark-mode .is-tested svg {
+        color: #9673b9 !important;
+   }
+    .dark-mode .expand {
+        background: #1e1e30 !important;
+   }
+    .dark-mode .Navbar, .dark-mode .expand {
+        border-right: 0;
+   }
+    .dark-mode .Navbar .navbar-middle, .dark-mode .expand .navbar-middle {
+        color: #bdbdbd;
+   }
+    .dark-mode .table .cell:first-child {
+        background: #1e1e30 !important;
+   }
+    .dark-mode .table .cell.heading {
+        background: #1e1e30 !important;
+   }
+    .dark-mode .table .cell.heading:hover {
+        background: #212130 !important;
+   }
+    .dark-mode .table .is-highlighted .cell, .dark-mode .table .is-total .cell {
+        background: #1e1e30 !important;
+   }
+    .dark-mode .Search input {
+        background: #1e1e30 !important;
+   }
+    .dark-mode .State .header-right h5 {
+        color: #9673b9 bb !important;
+   }
+    .dark-mode .State .header-right h2 {
+        color: #9673b9 !important;
+   }
+    .dark-mode .State .header-right a {
+        background: #400080 50 !important;
+   }
+    .dark-mode .State .breadcrumb ul {
+        background: #1e1e30 !important;
+   }
+    .dark-mode .State .breadcrumb ul::after {
+        border-bottom-color: #1e1e30 !important;
+   }
+    .dark-mode .State .breadcrumb ul li a {
+        color: #6c757d !important;
+   }
+    .dark-mode .State .breadcrumb ul li a:hover {
+        color: #fff !important;
+   }
+    .dark-mode .StateHeader .header-right {
+        color: #9673b9 bb;
+   }
+    .dark-mode .StateHeader .header-right h2 {
+        color: #9673b9;
+   }
+    .dark-mode .StateHeader .header-right a {
+        background: #400080 50;
+   }
+    .dark-mode .MapExplorer #chart.zone, .dark-mode .MapExplorer #legend-choro.zone {
+        filter: none;
+   }
+    .dark-mode .MapExplorer #chart:not(.zone), .dark-mode .MapExplorer #legend-choro:not(.zone) {
+        filter: invert(1) hue-rotate(180deg) saturate(1.5);
+   }
+    .fadeInUp {
+        animation-duration: 0.45s;
+        animation-fill-mode: both;
+        animation-name: fadeInUp;
+   }
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, 20px, 0);
+       }
+        100% {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+       }
+   }
+    .rotateDownRight {
+        animation-duration: 0.25s;
+        animation-fill-mode: both;
+        animation-name: rotateDownRight;
+   }
+    @keyframes rotateDownRight {
+        100% {
+            transform: rotate(-90deg);
+       }
+   }
+    .rotateRightDown {
+        animation-duration: 0.25s;
+        animation-fill-mode: both;
+        animation-name: rotateRightDown;
+   }
+    @keyframes rotateRightDown {
+        0% {
+            transform: rotate(-90deg);
+       }
+   }
+    .fadeOutDown {
+        animation-duration: 0.45s;
+        animation-fill-mode: both;
+        animation-name: fadeOutDown;
+   }
+    @keyframes fadeOutDown {
+        0% {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+       }
+        100% {
+            opacity: 0;
+            transform: translate3d(0, 20px, 0);
+       }
+   }
+}
